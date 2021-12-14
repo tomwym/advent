@@ -6,6 +6,7 @@
 #include <sstream>
 #include <fstream>
 #include <iterator>
+#include <unordered_map>
 
 namespace advent21 {
 
@@ -39,15 +40,16 @@ Base<T>::Base(std::string nums)
 
 template<typename T>
 vvs Base<T>::ReadFile(const std::string& filepath) {
+    vvs object {};
+
     std::ifstream ifs(filepath);
     if(!ifs)
     {
-        std::cout << "no file" << std::endl;
+        std::cout << "no file\t\t" << filepath << std::endl;
+        return object;
     } 
 
     std::string lineBuffer {};
-
-    vvs object;
 
     // loop through file as input stream
     while (std::getline(ifs, lineBuffer, '\n')) {
@@ -60,6 +62,8 @@ vvs Base<T>::ReadFile(const std::string& filepath) {
         }
         object.push_back(line);
     }
+    ifs.close();
+    std::cout << "found file\t" << filepath << std::endl;
     return object;
 }
 
@@ -80,7 +84,7 @@ std::vector<T> Base<T>::vTFromVVS(const vvs& obj) {
     std::stringstream ss;
     T buffer;
     for (const auto& vstr : obj) {
-        std::copy(vstr.begin(), vstr.end(),std::ostream_iterator<std::string>(ss,"\n"));
+        std::copy(vstr.begin(), vstr.end(),                                 std::ostream_iterator<std::string>(ss,"\n"));
         ss >> buffer;
         out.push_back(buffer);
     }
