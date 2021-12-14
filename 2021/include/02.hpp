@@ -24,7 +24,7 @@ void Sol02<T>::Solution1() {
     int increment = 0;
     int depth = 0;
     int range = 0;
-    for(const auto& vstr : this->obj1 ) {
+    for(const auto& vstr : this->obj ) {
         std::copy(vstr.begin(), vstr.end(), 
                   std::ostream_iterator<std::string>(ss,"\n"));
         ss >> key >> increment;
@@ -48,7 +48,7 @@ void Sol02<T>::Solution2() {
     int aim = 0;
     int depth = 0;
     int range = 0;
-    for(const auto& vstr : this->obj1 ) {
+    for(const auto& vstr : this->obj ) {
         std::copy(vstr.begin(), vstr.end(), 
                   std::ostream_iterator<std::string>(ss,"\n"));
         ss >> key >> increment;

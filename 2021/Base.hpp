@@ -27,15 +27,13 @@ protected:
     const char* prefix = "./dat/";
     const char* suffix = ".dat";
     char delimiter;
-    vvs obj1;
-    vvs obj2;
+    vvs obj;
 };
 
 template<typename T>
 Base<T>::Base(std::string nums)
-: delimiter(' '), obj1({}), obj2({}) {
-    obj1 = ReadFile(prefix + nums + ".1" + suffix);
-    obj2 = ReadFile(prefix + nums + ".2" + suffix);
+: delimiter(' '), obj({}) {
+    obj = ReadFile(prefix + nums + suffix);
 }
 
 template<typename T>
