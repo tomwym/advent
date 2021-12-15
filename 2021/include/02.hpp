@@ -42,7 +42,7 @@ void Sol02<T>::Solution1() {
 
 template<typename T>
 void Sol02<T>::Solution2() {
-        std::stringstream ss;
+    std::stringstream ss;
     std::string key {};
     int increment = 0;
     int aim = 0;
