@@ -7,7 +7,7 @@ const int NUM_BINGO_ELEMENTS = 25;
 template<typename T> 
 bool CheckBingo(std::array<bool, NUM_BINGO_ELEMENTS> card){
     // go throw each 'row' of the card, returning true if any row is filled
-    for (int i=0; i<NUM_BINGO_ELEMENTS-5; i+=5) {
+    for (int i=0; i<=NUM_BINGO_ELEMENTS-5; i+=5) {
         bool ans = true;
         for (int j=i; j<i+5; j++) {
             if (!card[j]) {
@@ -19,10 +19,11 @@ bool CheckBingo(std::array<bool, NUM_BINGO_ELEMENTS> card){
             return true;
         }
     }
+
     // do the same for each column
-    for (int i=0; i<5; i+=5) {
+    for (int i=0; i<5; i++) {
         bool ans = true;
-        for (int j=i; j<NUM_BINGO_ELEMENTS-5; j+=5) {
+        for (int j=i; j<=i+NUM_BINGO_ELEMENTS-5; j+=5) {
             if (!card[j]) {
                 ans = false;
                 break;
@@ -118,7 +119,7 @@ void Sol04<T>::Solution1() {
                 }
             }
             if (CheckBingo<void>(ifbingos[i])) {
-                boardind = calloutnum;
+                boardind = i;
                 sumOfUnmarked = FindSumUnmarked<T>(ifbingos[i], card);
                 calloutWhenDONE = call;
                 goto DONE1;
@@ -126,8 +127,13 @@ void Sol04<T>::Solution1() {
         }
     }
     DONE1: 
-    std::cout << boardind << ' ' << sumOfUnmarked << ' ' << calloutWhenDONE << '\n';
+    std::cout << calloutnum << ' ' << boardind << ' ' << sumOfUnmarked << ' ' << calloutWhenDONE << '\n';
     std::cout << sumOfUnmarked * calloutWhenDONE << " solution1" << std::endl;
+    /*
+    std::array<bool, NUM_BINGO_ELEMENTS> _temp;
+    _temp.fill(false);
+    CheckBingo<void>(_temp);
+    */
 }
 
 template<typename T>
@@ -153,7 +159,6 @@ void Sol04<T>::Solution2() {
         // std::cout << call << ' ';
         // iterate through list of bingo cards to check if there are any matching values
         int i = 0; // i to keep track of which card
-        int nnotfilled = 0;
         for (const auto& card : bingocards) {
             // i is card index
             i = &card - &bingocards[0];
@@ -167,34 +172,20 @@ void Sol04<T>::Solution2() {
                     ifbingos[i][j] = true;
                 }
             }
-            if (CheckBingo<void>(ifbingos[i])) {
+            if (!allCardsFilled[i] && CheckBingo<void>(ifbingos[i])) {
                 allCardsFilled[i] = true;
-                if (allCardsFilled == allTrue) {
-                    for (const auto& y : allCardsFilled) {
-                        std::cout << y << ' ';
-                    }
-                    std::cout << std::endl;
+                if (allCardsFilled == allTrue) {;
                     boardind = i;
                     sumOfUnmarked = FindSumUnmarked<T>(ifbingos[i], card);
                     calloutWhenDONE = call;
                     goto DONE2;
                 }
-            } else {
-                nnotfilled++;
             }
-
         }
-        std::cout << nnotfilled << '\n';
-
-        //for (const auto& y : allCardsFilled) {
-        //    std::cout << y << ' ';
-        //}
-        //std::cout << std::endl;
     }
     DONE2:
-    std::cout << boardind << ' ' << sumOfUnmarked << ' ' << calloutWhenDONE << '\n';
+    std::cout << calloutnum << ' ' << boardind << ' ' << sumOfUnmarked << ' ' << calloutWhenDONE << '\n';
     std::cout << sumOfUnmarked * calloutWhenDONE << " solution2" << std::endl;
-
 }
 
 }

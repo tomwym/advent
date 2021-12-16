@@ -1,3 +1,0 @@
-#!/bin/bash
-
-g++ main.cpp -o bin/${1} -std=c++17

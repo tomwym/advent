@@ -8,5 +8,5 @@ fi
 
 for i in "${vals[@]}" 
 do
-    ./bin/${i}
+    ./main ${i}
 done
