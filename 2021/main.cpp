@@ -12,12 +12,12 @@ int main(int argc, char** argv) {
     nums = std::string(nums.end()-2, nums.end());
 
     int numi = std::stoi(nums);
-    std::unique_ptr<Base<void>> truer;
+    std::unique_ptr<Base<int>> truer;
     switch(numi) {
-        case  1 : truer = std::make_unique<Sol01<void>>(nums); break;
-        case  2 : truer = std::make_unique<Sol02<void>>(nums); break;
-        case  3 : truer = std::make_unique<Sol03<void>>(nums); break;
-        case  4 : // truer = std::make_unique<Sol04<void>>(nums); break;
+        //case  1 : truer = std::make_unique<Sol01<void>>(nums); break;
+        //case  2 : truer = std::make_unique<Sol02<void>>(nums); break;
+        //case  3 : truer = std::make_unique<Sol03<void>>(nums); break;
+        case  4 : truer = std::make_unique<Sol04<int>>(nums); break;
         case  5 : // truer = std::make_unique<Sol05<void>>(nums); break;
         case  6 : // truer = std::make_unique<Sol06<void>>(nums); break;
         case  7 : // truer = std::make_unique<Sol07<void>>(nums); break;

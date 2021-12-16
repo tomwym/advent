@@ -15,7 +15,7 @@ public:
 
 template<typename T>
 Sol02<T>::Sol02(std::string nums)
-: Base<T>(nums) { }
+: Base<T>(nums, ' ') { }
 
 template<typename T>
 void Sol02<T>::Solution1() {

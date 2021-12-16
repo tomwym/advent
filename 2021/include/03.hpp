@@ -59,7 +59,7 @@ public:
 
 template<typename T>
 Sol03<T>::Sol03(const std::string& nums)
-: Base<T>(nums) { }
+: Base<T>(nums, ' ') { }
 
 template<typename T>
 void Sol03<T>::Solution1() {
