@@ -10,7 +10,8 @@ bool CompareInts(char key, int val1, int val2) {
     }
 } 
 
-int Part2(const std::vector<std::string>& vecString, const char P) {
+template <typename T>
+std::string Part2(const std::vector<std::string>& vecString, const char P) {
     std::string buffer {};
     int m = vecString.size();
 
@@ -19,30 +20,40 @@ int Part2(const std::vector<std::string>& vecString, const char P) {
 
     int j = 0;
     while (indices.size() > 1) {
-        int local_index = 0;
-        std::vector<int> vPs;
-        std::vector<int> vSs;
+        int index_1 = 0;
+
+        //stores the index of the majority
+        std::vector<int> v1s;
+        std::vector<int> v0s;
 
         for(const auto& i : indices) {
             char a = vecString[i][j];
-            if (a == P) {
-                local_index++;
-                vPs.push_back(i);
+            if (a == '1') {
+                index_1++;
+                v1s.push_back(i);
             } else {
-                vSs.push_back(i);
+                v0s.push_back(i);
             }
         }
-        if (CompareInts(P, local_index, indices.size()-local_index)) {
-            indices = vPs;
-        } else {
-            indices = vSs;
-        }
 
-        buffer = vecString[*indices.end()];
+        if (P == 'o') {
+            if (index_1 >= indices.size()-index_1) {
+                indices = v1s;
+            } else {
+                indices = v0s;
+            }
+        } else {
+            if (index_1 < indices.size()-index_1) {
+                indices = v1s;
+            } else {
+                indices = v0s;
+            }
+        }
+        buffer = vecString[indices[0]];
         j++;
     }
 
-    return std::stoi(buffer, nullptr, 2);
+    return buffer;
 }
 
 template<typename T>
@@ -99,10 +110,15 @@ void Sol03<T>::Solution1() {
 template<typename T>
 void Sol03<T>::Solution2() {
     std::vector<T> vecString = vTFromVVT<T>(obj);
-    int part1 = Part2(vecString, '1');
-    int part2 = Part2(vecString, '0');
-    std::cout << part1 << ' ' << part2 << '\n';
-    std::cout << part1 * part2 << " solution2" << std::endl;
+    std::string o2s = Part2<void>(vecString, 'o');
+    std::string co2s = Part2<void>(vecString, 'c');
+
+    int o2i = std::stoi(o2s, nullptr, 2);
+    int co2i = std::stoi(co2s, nullptr, 2);
+
+    std::cout << o2s << ' ' << co2s << '\n';
+    std::cout << o2i << ' ' << co2i << '\n';
+    std::cout << o2i * co2i << " solution2" << std::endl;
 }
 
 }
