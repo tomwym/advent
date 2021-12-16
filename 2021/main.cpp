@@ -8,16 +8,17 @@ using namespace advent21;
 template <typename T> std::string type_name();
 
 int main(int argc, char** argv) {
-    std::string nums(argv[0]);
+    std::string nums(argv[1]);
     nums = std::string(nums.end()-2, nums.end());
 
     int numi = std::stoi(nums);
-    std::unique_ptr<Base<int>> truer;
+    std::unique_ptr<Base> truer;
     switch(numi) {
-        //case  1 : truer = std::make_unique<Sol01<void>>(nums); break;
-        //case  2 : truer = std::make_unique<Sol02<void>>(nums); break;
-        //case  3 : truer = std::make_unique<Sol03<void>>(nums); break;
+        case  1 : truer = std::make_unique<Sol01<int>>(nums); break;
+        case  2 : truer = std::make_unique<Sol02<std::string>>(nums); break;
+        case  3 : truer = std::make_unique<Sol03<std::string>>(nums); break;
         case  4 : truer = std::make_unique<Sol04<int>>(nums); break;
+
         case  5 : // truer = std::make_unique<Sol05<void>>(nums); break;
         case  6 : // truer = std::make_unique<Sol06<void>>(nums); break;
         case  7 : // truer = std::make_unique<Sol07<void>>(nums); break;
@@ -42,12 +43,13 @@ int main(int argc, char** argv) {
 
         default : break; //return 0;
     }
-
     // std::string file= std::string("./dat/" + obj + ".dat");
     // vvs out = truer->ReadFile(file);
     // Base<void>::PrintVVS(out);
+    std::cout << "Day " << nums << '\n';
     truer->Solution1();
+    std::cout << std::endl;
     truer->Solution2();
-
+    std::cout << "***** ***** ***** ***** *****" << '\n' << std::endl;
     return 0;
 }

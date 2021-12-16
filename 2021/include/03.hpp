@@ -1,8 +1,5 @@
 #pragma once
 
-#include <numeric>
-//#include "../Base.hpp"
-
 namespace advent21 {
 
 bool CompareInts(char key, int val1, int val2) {
@@ -49,25 +46,31 @@ int Part2(const std::vector<std::string>& vecString, const char P) {
 }
 
 template<typename T>
-class Sol03 : public Base<T> {
+class Sol03 : public Base {
 public:
     Sol03(const std::string&);
     void Solution1();
     void Solution2();
+private:
+    std::vector<std::vector<T>> obj;
 };
 
 
 template<typename T>
 Sol03<T>::Sol03(const std::string& nums)
-: Base<T>(nums, ' ') { }
+: Base(nums) { }
 
 template<typename T>
 void Sol03<T>::Solution1() {
+    obj = ReadVVT<T>(this->filename, ',');
+    std::vector<T> vecString = vTFromVVT<T>(obj);
+
     std::string gammas {};
     std::string epsilons {};
-    std::vector<std::string> vecString = Base<std::string>::vTFromVVS(this->obj);
+
     int m = vecString.size();
     int n = vecString[0].size();
+
     for(int j=0; j<n; j++) {
 
         int gamman = 0;
@@ -95,7 +98,7 @@ void Sol03<T>::Solution1() {
 
 template<typename T>
 void Sol03<T>::Solution2() {
-    std::vector<std::string> vecString = Base<std::string>::vTFromVVS(this->obj);
+    std::vector<T> vecString = vTFromVVT<T>(obj);
     int part1 = Part2(vecString, '1');
     int part2 = Part2(vecString, '0');
     std::cout << part1 << ' ' << part2 << '\n';

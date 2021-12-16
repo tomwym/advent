@@ -7,19 +7,19 @@
 #include <fstream>
 #include <iterator>
 #include <unordered_map>
+#include <numeric>
 #include <algorithm>
 
 namespace advent21 {
 
 using vvs = std::vector<std::vector<std::string>>;
 
-template<typename T>
 class Base {
 public:
     Base(const std::string&);
-    static std::vector<std::vector<T>> ReadVVT(const std::string&, char);
-    static void PrintVVT(const std::vector<std::vector<T>>&);
-    static std::vector<T> vTFromVVT(const std::vector<std::vector<T>>&);
+    // static std::vector<std::vector<T>> ReadVVT(const std::string&, char);
+    // static void PrintVVT(const std::vector<std::vector<T>>&);
+    // static std::vector<T> vTFromVVT(const std::vector<std::vector<T>>&);
 
     virtual void Solution1() = 0;
     virtual void Solution2() = 0;
@@ -27,21 +27,21 @@ public:
 protected:
     const char* prefix = "./dat/";
     const char* suffix = ".dat";
-    std::string nums;
+    std::string filename;
+    //std::string nums;
     char mdelimiter = ' ';
 };
 
-template<typename T>
-Base<T>::Base(const std::string& _nums)
-: nums(_nums) { }
+Base::Base(const std::string& _nums)
+: filename(prefix + _nums + suffix) { }
 
 template<typename T>
-std::vector<std::vector<T>> Base<T>::ReadVVT(const std::string& filepath, char _delimiter) {
+std::vector<std::vector<T>> ReadVVT(const std::string& filepath, char _delimiter) {
     std::vector<std::vector<T>> object {};
     std::ifstream ifs(filepath);
     if(!ifs)
     {
-        std::cout << "no file\t" << filepath << std::endl;
+        std::cout << "No file\t" << filepath << std::endl;
         return object;
     } 
 
@@ -60,12 +60,12 @@ std::vector<std::vector<T>> Base<T>::ReadVVT(const std::string& filepath, char _
         object.push_back(line);
     }
     ifs.close();
-    std::cout << "found file\t" << filepath << std::endl;
+    std::cout << "Found file\t" << filepath << std::endl;
     return object;
 }
 
 template<typename T>
-void Base<T>::PrintVVT(const std::vector<std::vector<T>>& obj) {
+void PrintVVT(const std::vector<std::vector<T>>& obj) {
     for (const auto& vT : obj) {
         for (const auto& t : vT) {
             std::cout << t << ' ';
@@ -76,14 +76,14 @@ void Base<T>::PrintVVT(const std::vector<std::vector<T>>& obj) {
 }
 
 template<typename T>
-std::vector<T> Base<T>::vTFromVVT(const std::vector<std::vector<T>>& obj) {
+std::vector<T> vTFromVVT(const std::vector<std::vector<T>>& obj) {
     std::vector<T> out {};
-    std::stringstream ss;
     T buffer;
-    for (const auto& vstr : obj) {
-        std::copy(vstr.begin(), vstr.end(), std::ostream_iterator<std::string>(ss,"\n"));
-        ss >> buffer;
-        out.push_back(buffer);
+    for (const auto& vT : obj) {
+        // std::copy(vstr.begin(), vstr.end(), std::ostream_iterator<std::string>(ss,"\n"));
+        out.push_back(vT[0]);
+        // ss >> buffer;
+        // out.push_back(buffer);
     }
     return out;
 }
