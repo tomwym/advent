@@ -6,6 +6,7 @@
 #include <sstream>
 #include <fstream>
 #include <iterator>
+#include <map>
 #include <unordered_map>
 #include <numeric>
 #include <algorithm>
@@ -86,6 +87,18 @@ std::vector<T> vTFromVVT(const std::vector<std::vector<T>>& obj) {
         // out.push_back(buffer);
     }
     return out;
+}
+
+template<typename T>
+std::vector<T> vTFromS(std::string str, const char delim) {
+    std::replace(str.begin(), str.end(), delim, ' ');
+    std::stringstream ss(str);
+    std::vector<T> obj {};
+    T valueBuffer {};
+    while (ss >> valueBuffer) {
+        obj.push_back(valueBuffer);
+    }
+    return obj;
 }
 
 }

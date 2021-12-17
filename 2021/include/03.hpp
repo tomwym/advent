@@ -3,10 +3,10 @@
 namespace advent21 {
 
 bool CompareInts(char key, int val1, int val2) {
-    if (key == '1') {
+    if (key == 'o') {
         return val1 >= val2;
     } else {
-        return val1 <= val2;
+        return val1 < val2;
     }
 } 
 
@@ -36,18 +36,10 @@ std::string Part2(const std::vector<std::string>& vecString, const char P) {
             }
         }
 
-        if (P == 'o') {
-            if (index_1 >= indices.size()-index_1) {
-                indices = v1s;
-            } else {
-                indices = v0s;
-            }
+        if (CompareInts(P, index_1, indices.size()-index_1)) {
+            indices = v1s;
         } else {
-            if (index_1 < indices.size()-index_1) {
-                indices = v1s;
-            } else {
-                indices = v0s;
-            }
+            indices = v0s;
         }
         buffer = vecString[indices[0]];
         j++;

@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
         case  2 : truer = std::make_unique<Sol02<std::string>>(nums); break;
         case  3 : truer = std::make_unique<Sol03<std::string>>(nums); break;
         case  4 : truer = std::make_unique<Sol04<int>>(nums); break;
-        case  5 : // truer = std::make_unique<Sol05<void>>(nums); break;
+        case  5 : truer = std::make_unique<Sol05<std::string,int>>(nums); break;
         case  6 : // truer = std::make_unique<Sol06<void>>(nums); break;
         case  7 : // truer = std::make_unique<Sol07<void>>(nums); break;
         case  8 : // truer = std::make_unique<Sol08<void>>(nums); break;

@@ -129,11 +129,6 @@ void Sol04<T>::Solution1() {
     DONE1: 
     std::cout << calloutnum << ' ' << boardind << ' ' << sumOfUnmarked << ' ' << calloutWhenDONE << '\n';
     std::cout << sumOfUnmarked * calloutWhenDONE << " solution1" << std::endl;
-    /*
-    std::array<bool, NUM_BINGO_ELEMENTS> _temp;
-    _temp.fill(false);
-    CheckBingo<void>(_temp);
-    */
 }
 
 template<typename T>
