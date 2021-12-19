@@ -7,7 +7,7 @@
 #include "include/04.hpp"
 #include "include/05.hpp"
 #include "include/06.hpp"
-// #include "include/07.hpp"
+#include "include/07.hpp"
 // #include "include/08.hpp"
 // #include "include/09.hpp"
 // #include "include/10.hpp"
