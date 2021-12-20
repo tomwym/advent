@@ -24,7 +24,7 @@ T Sol06<T>::Day06(const T ITERATIONS) {
     for (const auto& i : obj[0]) {
         container[i]++;
     }
-    for (int i=0; i<ITERATIONS; i++) {
+    for (T i=0; i<ITERATIONS; i++) {
         T buffer = container[0];
         for (int i=0; i<=7; i++) {
             container[i] = container[i+1];

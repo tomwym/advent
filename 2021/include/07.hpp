@@ -50,7 +50,7 @@ void Sol07<T>::Solution1() {
     std::vector<T> out = obj[0];
 
     T min = std::numeric_limits<T>::max();
-    for (int i=0; i<out.size(); i++) {
+    for (T i=0; i<out.size(); i++) {
         T val = out[i];
         T cost = Cost071(out, val);
         if (cost < min) {
@@ -65,7 +65,7 @@ void Sol07<T>::Solution2() {
     std::vector<T> out = obj[0];
 
     T min = std::numeric_limits<T>::max();
-    for (int i=0; i<out.size(); i++) {
+    for (T i=0; i<out.size(); i++) {
         T val = out[i];
         T cost = Cost072(out, val);
         if (cost < min) {

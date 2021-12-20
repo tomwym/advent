@@ -82,7 +82,6 @@ void PrintVVT(const std::vector<std::vector<T>>& obj) {
 template<typename T>
 std::vector<T> vTFromVVT(const std::vector<std::vector<T>>& obj) {
     std::vector<T> out {};
-    T buffer;
     for (const auto& vT : obj) {
         // std::copy(vstr.begin(), vstr.end(), std::ostream_iterator<std::string>(ss,"\n"));
         out.push_back(vT[0]);
