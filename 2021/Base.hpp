@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <set>
 #include <unordered_set>
+#include <stack>
 
 namespace advent21 {
 
@@ -46,7 +47,7 @@ std::vector<std::vector<T>> ReadVVT(const std::string& filepath, char _delimiter
     {
         std::cout << "No file\t" << filepath << std::endl;
         return object;
-    } 
+    }
 
     std::string lineBuffer {};
 
