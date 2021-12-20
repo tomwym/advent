@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <numeric>
 #include <algorithm>
+#include <set>
+#include <unordered_set>
 
 namespace advent21 {
 
