@@ -13,6 +13,7 @@
 #include <set>
 #include <unordered_set>
 #include <stack>
+#include <utility>
 
 namespace advent21 {
 

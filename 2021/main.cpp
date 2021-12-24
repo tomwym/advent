@@ -23,10 +23,10 @@ int main(int argc, char** argv) {
         case  7 : truer = std::make_unique<Sol07<unsigned long long int>>(nums); break;
         case  8 : truer = std::make_unique<Sol08<std::string>>(nums); break;
         case  9 : truer = std::make_unique<Sol09<std::string>>(nums); break;
-        case 10 : truer = std::make_unique<Sol10<std::string, unsigned long long int>>(nums); break;
-        case 11 : truer = std::make_unique<Sol11<std::string, int>>(nums); break;
+        case 10 : truer = std::make_unique<Sol10<std::string,unsigned long long int>>(nums); break;
+        case 11 : truer = std::make_unique<Sol11<std::string,int>>(nums); break;
         case 12 : // truer = std::make_unique<Sol12<void>>(nums); break;
-        case 13 : // truer = std::make_unique<Sol13<void>>(nums); break;
+        case 13 : truer = std::make_unique<Sol13<std::string,int>>(nums); break;
         case 14 : // truer = std::make_unique<Sol14<void>>(nums); break;
         case 15 : // truer = std::make_unique<Sol15<void>>(nums); break;
         case 16 : // truer = std::make_unique<Sol16<void>>(nums); break;
