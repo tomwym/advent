@@ -14,6 +14,7 @@
 #include <unordered_set>
 #include <stack>
 #include <utility>
+#include <cctype>
 
 namespace advent21 {
 
@@ -30,7 +31,7 @@ public:
     virtual void Solution2() = 0;
     virtual ~Base() {}
 protected:
-    const char* prefix = "./dat/";
+    const char* prefix = "/home/txx/dev/advent/2021/dat/";
     const char* suffix = ".dat";
     std::string filename;
     //std::string nums;
